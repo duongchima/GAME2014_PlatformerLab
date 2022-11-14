@@ -166,8 +166,10 @@ MonoBehaviour:
   groundRadius: 0.5
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   isGrounded: 0
+  animator: {fileID: 7892293198536036803}
+  playerAnimState: 0
 --- !u!1 &7892293198923695365
 GameObject:
   m_ObjectHideFlags: 0

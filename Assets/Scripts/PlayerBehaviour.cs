@@ -89,9 +89,4 @@ public class PlayerBehaviour : MonoBehaviour
         playerAnimState = animationState;
         animator.SetInteger("AnimationState", (int)playerAnimState);
     }
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundPoint.position, groundRadius);
-    }
 }
