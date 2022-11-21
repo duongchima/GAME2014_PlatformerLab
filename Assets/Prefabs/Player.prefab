@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7892293198536036800}
   - component: {fileID: 7892293198536036801}
   - component: {fileID: 7892293198536036804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7892293198923695364}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
