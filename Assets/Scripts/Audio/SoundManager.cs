@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
         audioClips.Add(Resources.Load<AudioClip>("Audio/hurt"));
         audioClips.Add(Resources.Load<AudioClip>("Audio/death"));
         audioClips.Add(Resources.Load<AudioClip>("Audio/main-soundtrack")); 
-        audioClips.Add(Resources.Load<AudioClip>("Audio/No Hope"));
+        audioClips.Add(Resources.Load<AudioClip>("Audio/end-soundtrack"));
     }
     public void PlaySoundFX(Sound sound, Channel channel)
     {
