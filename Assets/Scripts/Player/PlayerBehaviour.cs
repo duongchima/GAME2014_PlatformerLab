@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Movement Properties")]
@@ -51,6 +51,11 @@ public class PlayerBehaviour : MonoBehaviour
                 deathPlane.Respawn(gameObject);
                 soundManager.PlaySoundFX(Sound.DEATH, Channel.PLAYER_DEATH_FX);
             }
+        }
+
+        if(life.value <= 0)
+        {
+            SceneManager.LoadScene("End");
         }
         
     }
