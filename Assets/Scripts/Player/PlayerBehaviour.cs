@@ -20,6 +20,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Health System")]
     public HealthBarController health;
+    public LifeCounterController life;
+    public DeathPlaneController deathPlane;
 
     [Header("Controls")]
     public Joystick leftStick;
@@ -32,14 +34,22 @@ public class PlayerBehaviour : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = FindObjectOfType<PlayerHealth>().GetComponent<HealthBarController>();
+        life = FindObjectOfType<LifeCounterController>();
+        deathPlane = FindObjectOfType<DeathPlaneController>();
         leftStick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
     }
     private void Update()
     {
         if(health.value <= 0)
         {
-
+            life.LoseLife();
+            if(life.value > 0)
+            {
+                health.ResetHealth();
+                deathPlane.Respawn(gameObject);
+            }
         }
+        
     }
     // Update is called once per frame
     void FixedUpdate()

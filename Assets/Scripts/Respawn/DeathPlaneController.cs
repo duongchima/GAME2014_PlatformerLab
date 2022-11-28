@@ -9,7 +9,13 @@ public class DeathPlaneController : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-            Respawn(collision.gameObject);
+            var player = collision.gameObject.GetComponent<PlayerBehaviour>();
+            player.life.LoseLife();
+            player.health.ResetHealth();
+            if(player.life.value > 0)
+            {
+                Respawn(collision.gameObject);
+            }
         }
     }
     public void Respawn(GameObject go)
