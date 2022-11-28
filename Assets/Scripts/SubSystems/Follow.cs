@@ -10,6 +10,7 @@ public struct Target
     public bool x;
     public bool y;
 }
+[ExecuteInEditMode]
 public class Follow : MonoBehaviour
 {
     public Target target;

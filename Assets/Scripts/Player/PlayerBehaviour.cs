@@ -18,6 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
     public Animator animator;
     public PlayerAnimState playerAnimState;
 
+    [Header("Health System")]
+    public HealthBarController health;
+
     [Header("Controls")]
     public Joystick leftStick;
     [Range(0.1f, 1.0f)]
@@ -28,9 +31,16 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        health = FindObjectOfType<PlayerHealth>().GetComponent<HealthBarController>();
         leftStick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
     }
+    private void Update()
+    {
+        if(health.value <= 0)
+        {
 
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -94,5 +104,14 @@ public class PlayerBehaviour : MonoBehaviour
     {
         playerAnimState = animationState;
         animator.SetInteger("AnimationState", (int)playerAnimState);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health.TakeDamage(20);
+
+        }
     }
 }

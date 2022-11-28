@@ -12,5 +12,4 @@ public class GameController : MonoBehaviour
         onScreenControls = GameObject.Find("OnScreenControls");
         onScreenControls.SetActive(Application.isMobilePlatform);
     }
-
 }
