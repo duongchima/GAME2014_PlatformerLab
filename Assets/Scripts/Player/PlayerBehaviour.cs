@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,14 @@ public class PlayerBehaviour : MonoBehaviour
     public ParticleSystem dustTrail;
     public Color dustTrailColour;
 
+    [Header("Screen Shake Properties")]
+    public CinemachineVirtualCamera playerCam;
+    public CinemachineBasicMultiChannelPerlin perlin;
+    public float shakeIntensity;
+    public float shakeDuration;
+    public float shakeTimer;
+    public bool isCameraShaking;
+
     [Header("Health System")]
     public HealthBarController health;
     public LifeCounterController life;
@@ -45,6 +54,11 @@ public class PlayerBehaviour : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
 
         dustTrail = GetComponentInChildren<ParticleSystem>();
+
+        playerCam = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        perlin = playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        isCameraShaking = false;
+        shakeTimer = shakeDuration;
     }
     private void Update()
     {
@@ -73,6 +87,18 @@ public class PlayerBehaviour : MonoBehaviour
         Move();
         Jump();
         AirCheck();
+
+        // Camera Shake Control
+        if (isCameraShaking)
+        {
+            shakeTimer -= Time.deltaTime;
+            if(shakeTimer <= 0.0f) // timed out
+            {
+                perlin.m_AmplitudeGain = 0.0f;
+                shakeTimer = shakeDuration;
+                isCameraShaking = false;
+            }
+        }
     }
 
     private void Move()
@@ -107,6 +133,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         dustTrail.GetComponent<Renderer>().material.SetColor("_Color", dustTrailColour);
         dustTrail.Play();
+    }
+
+    private void ShakeCamera()
+    {
+        perlin.m_AmplitudeGain = shakeIntensity;
+        isCameraShaking = true;
     }
     private void Jump()
     {
@@ -147,6 +179,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             health.TakeDamage(20);
             soundManager.PlaySoundFX(Sound.HURT, Channel.PLAYER_HURT_FX);
+            ShakeCamera();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Hazard"))
+        {
+            health.TakeDamage(30);
+            soundManager.PlaySoundFX(Sound.HURT, Channel.PLAYER_HURT_FX);
+            ShakeCamera();
         }
     }
 }

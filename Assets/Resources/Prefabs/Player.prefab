@@ -5073,6 +5073,12 @@ MonoBehaviour:
   playerAnimState: 0
   dustTrail: {fileID: 0}
   dustTrailColour: {r: 0.94117653, g: 0.7254902, b: 0.5372549, a: 1}
+  playerCam: {fileID: 0}
+  perlin: {fileID: 0}
+  shakeIntensity: 2
+  shakeDuration: 0.5
+  shakeTimer: 0.5
+  isCameraShaking: 0
   health: {fileID: 0}
   life: {fileID: 0}
   deathPlane: {fileID: 0}
