@@ -16,7 +16,7 @@ TagManager:
   - Props
   - Platform
   - Enemy
-  - 
+  - Marker
   - 
   - 
   - 
@@ -53,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1678132221
+    locked: 0
+  - name: Marker
+    uniqueID: 1848891937
     locked: 0
   - name: UI
     uniqueID: 2440543461
