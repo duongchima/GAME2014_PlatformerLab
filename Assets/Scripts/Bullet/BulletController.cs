@@ -14,7 +14,6 @@ public class BulletController : MonoBehaviour
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        Activate();
     }
 public void Activate()
     {
@@ -45,7 +44,7 @@ public void Activate()
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Prop"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Prop") || collision.gameObject.CompareTag("Platform"))
         {
             DestroyYourself();
         }
