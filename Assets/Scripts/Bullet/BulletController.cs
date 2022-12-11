@@ -38,8 +38,15 @@ public void Activate()
     {
         if (gameObject.activeInHierarchy)
         {
-            Destroy(this.gameObject);
+            BulletManager.Instance().ReturnBullet(this.gameObject);
         }
+    }
+
+    public void ResetAllPhysics()
+    {
+        rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.angularVelocity = 0;
+        direction = Vector2.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

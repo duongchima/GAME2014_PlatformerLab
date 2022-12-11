@@ -9,8 +9,6 @@ public class EnemyRangedAttackAction : MonoBehaviour, Action
     public int fireDelay = 30;
     public Transform bulletSpawn;
 
-    public GameObject bulletPrefab; // temp location
-    public Transform bulletParent;
 
     private bool hasLOS;
     private PlayerDetection playerDetection;
@@ -20,8 +18,6 @@ public class EnemyRangedAttackAction : MonoBehaviour, Action
     {
         playerDetection = transform.parent.GetComponentInChildren<PlayerDetection>();
         soundManager = FindObjectOfType<SoundManager>();
-        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
-        bulletParent = GameObject.Find("Bullets").transform;
     }
 
     // Update is called once per frame
@@ -40,7 +36,7 @@ public class EnemyRangedAttackAction : MonoBehaviour, Action
 
     public void Execute()
     {
-        var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity, bulletParent);
+        var bullet = BulletManager.Instance().GetBullet(bulletSpawn.position);
         bullet.GetComponent<BulletController>().Activate();
         soundManager.PlaySoundFX(Sound.BULLET, Channel.BULLET);
 
