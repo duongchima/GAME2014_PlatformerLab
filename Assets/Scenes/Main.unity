@@ -963,7 +963,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3071
+    m_Bits: 7167
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6597,7 +6597,7 @@ GameObject:
   - component: {fileID: 992060782}
   m_Layer: 6
   m_Name: Foreground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10512,7 +10512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2031287413}
   - component: {fileID: 2031287414}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Camera Confiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

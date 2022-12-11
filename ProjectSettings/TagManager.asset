@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Hazard
+  - Bullet
+  - Ground
+  - Prop
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - Enemy
   - Marker
   - Hazard
-  - 
-  - 
+  - Bullet
+  - Confiner
   - 
   - 
   - 
@@ -51,6 +54,9 @@ TagManager:
     locked: 0
   - name: Player_FX
     uniqueID: 1769922557
+    locked: 0
+  - name: Bullet
+    uniqueID: 3510787039
     locked: 0
   - name: Player
     uniqueID: 1678132221
