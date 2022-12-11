@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
         {
             miniMap.SetActive(false);
         }
+
+        BulletManager.Instance().BuildBulletPool();
     }
     private void Update()
     {

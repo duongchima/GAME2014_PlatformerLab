@@ -75,6 +75,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(life.value <= 0)
         {
+            BulletManager.Instance().DestroyPool();
             SceneManager.LoadScene("End");
         }
         
